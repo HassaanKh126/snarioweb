@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
 
     const checkAuth = async () => {
         try {
-            const res = await fetch(`${BACKEND_AUTH_URL}/api/auth/check`, {
+            const res = await fetch(`${NEXT_PUBLIC_BACKEND_AUTH_URL}/api/auth/check`, {
                 credentials: 'include'
             });
 
