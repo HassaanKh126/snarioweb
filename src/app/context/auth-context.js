@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = async () => {
         try {
-            await fetch(`${process.env.BACKEND_AUTH_URL}/api/auth/logout`, {
+            await fetch(`${process.env.NEXT_PUBLIC_BACKEND_AUTH_URL}/api/auth/logout`, {
                 method: 'POST',
                 credentials: 'include',
             });
