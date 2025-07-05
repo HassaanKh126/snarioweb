@@ -1,0 +1,143 @@
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #000000;
+    color: #e0e0e0;
+}
+
+.page {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.panel {
+    max-height: 90vh;
+    max-width: 640px;
+    width: 100%;
+    background: #1e1e1e;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    overflow-y: scroll;
+}
+
+h1 {
+    margin: 0 0 16px;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-top: 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #ccc;
+}
+
+textarea {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 6px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 14px;
+    resize: vertical;
+    background: #181818;
+    color: #e0e0e0;
+}
+
+textarea::placeholder {
+    color: #666;
+}
+
+.ar-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 6px;
+    justify-content: center;
+}
+
+.ar-btn {
+    background: #181818;
+    border: 1px solid #3b3b3b;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.ar-btn.active {
+    background: #8e86ff;
+    color: #fff;
+    border-color: #8e86ff;
+}
+
+.generate-btn {
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    background: #8e86ff;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.generate-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.error {
+    color: #ff6b6b;
+    margin-top: 12px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.output {
+    margin-top: 24px;
+    text-align: center;
+}
+
+.output img {
+    max-width: 100%;
+    border-radius: 6px;
+    border: 1px solid #333;
+}
+
+
+.output {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.image-wrapper {
+    background: #181818;
+    border: 1px solid #333;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+    padding: 8px;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}

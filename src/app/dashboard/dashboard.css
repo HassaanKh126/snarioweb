@@ -1,0 +1,292 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(270deg, #000000, #000000, #000000);
+  background-size: 600% 600%;
+  animation: gradientBG 30s ease infinite;
+  color: #ffffff;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  overflow: hidden;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.dash-container {
+  display: flex;
+  height: 100vh;
+}
+
+.dash-sidebar {
+  width: 80px;
+  background-color: #0a0a0a;
+  border-right: 1px solid #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 25px;
+}
+
+.dash-create-btn {
+  background-color: #8e86ff;
+  color: #ffffff;
+  border: none;
+  padding: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.dash-create-btn:hover {
+  background-color: #6a5cff;
+}
+
+.dash-main-content {
+  flex: 1;
+  padding: 20px 30px;
+  overflow-y: auto;
+}
+
+.dash-app-name {
+  font-size: 28px;
+  font-weight: bold;
+  color: #8e86ff;
+}
+
+.dash-heading {
+  font-size: 46px;
+  font-weight: 300;
+  margin-bottom: 30px;
+  text-align: center;
+  background: linear-gradient(90deg, #8e86ff, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientText 5s infinite alternate;
+}
+
+@keyframes gradientText {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.dash-recent-projects h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #cccccc;
+}
+
+.dash-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 15px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dash-project-card {
+  background-color: #121212;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+  cursor: pointer;
+  animation: fadeInUp 0.3s ease forwards;
+  opacity: 0;
+}
+
+.dash-project-card:hover {
+  transform: translateY(-5px);
+  background: linear-gradient(135deg, #222222, #1a1a1a);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+}
+
+.dash-project-type {
+  margin-top: 5px;
+  font-size: 12px;
+  color: #8e86ff;
+  /* font-weight: bold; */
+}
+
+.dash-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.dash-account {
+  position: relative;
+}
+
+.dash-account-btn {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px #393939 solid;
+  padding: 12px 18px;
+  cursor: pointer;
+  border-radius: 100px;
+  transition: background-color 0.2s;
+  font-size: 1rem;
+}
+
+.dash-account-btn:hover {
+  background-color: #333333;
+}
+
+.dash-dropdown {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 5px;
+  margin-right: 10px;
+  z-index: 10;
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: dropdownIn 0.2s ease forwards;
+}
+
+@keyframes dropdownIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dash-dropdown-item {
+  background: #1a1a1a;
+  color: #ffffff;
+  border: 1px solid #333333;
+  text-align: right;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dash-dropdown-item:hover {
+  background-color: #8e86ff;
+}
+
+/* Modal stays as-is, optional to color modal buttons purple */
+.dash-modal-btn {
+  background-color: #8e86ff;
+}
+.dash-modal-btn:hover {
+  background-color: #6a5cff;
+}
+
+
+/* Modal Overlay */
+.dash-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Modal Box */
+.dash-modal {
+  background: #121212;
+  padding: 25px 30px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(142, 134, 255, 0.3);
+  max-width: 320px;
+  width: 90%;
+  animation: scaleIn 0.3s ease forwards;
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+@keyframes scaleIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.dash-modal h3 {
+  margin-bottom: 10px;
+  color: #ffffff;
+  font-size: 1.4rem;
+}
+
+.dash-modal p {
+  margin-bottom: 20px;
+  color: #aaaaaa;
+  font-size: 0.95rem;
+}
+
+.dash-modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.dash-modal-btn {
+  background-color: #8e86ff;
+  color: #ffffff;
+  border: none;
+  padding: 10px 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.dash-modal-btn:hover {
+  background-color: #6a5cff;
+  transform: translateY(-2px);
+}
+
+.dash-modal-close {
+  background: none;
+  border: 1px solid #555555;
+  color: #aaaaaa;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dash-modal-close:hover {
+  background-color: #222222;
+  color: #ffffff;
+}
