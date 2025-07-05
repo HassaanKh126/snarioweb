@@ -68,7 +68,7 @@ export default function LoginPage() {
         </form>
         {error && <div style={{ color: 'tomato', marginTop: '1rem' }}>{error}</div>}
         <div className="register">
-          <span>Don't have an account?</span>
+          <span>{`Don't have an account?`}</span>
           <a href="/signup">Sign Up</a>
         </div>
       </div>

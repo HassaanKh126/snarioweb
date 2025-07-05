@@ -49,7 +49,7 @@ export default function Home() {
           <div className="step">
             <div className="step-number">3</div>
             <h3>Track & Analyze</h3>
-            <p>Monitor performance, track engagement, and see what's working.</p>
+            <p>{`Monitor performance, track engagement, and see what's working.`}</p>
           </div>
         </div>
       </section>
