@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useContext, useEffect, useState } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 const AuthContext = createContext();
 
@@ -10,7 +10,6 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
     const pathname = usePathname();
-    const router = useRouter()
 
     const checkAuth = async () => {
         try {
@@ -44,25 +43,12 @@ export const AuthProvider = ({ children }) => {
         }
     }, [pathname]);
 
-    const logout = async () => {
-        try {
-            await fetch(`${process.env.NEXT_PUBLIC_BACKEND_AUTH_URL}/api/auth/logout`, {
-                method: 'POST',
-                credentials: 'include',
-            });
-        } catch {
-            // even if request fails, clear state
-        } finally {
-            setUser(null);
-            setIsAuthenticated(false);
-            router.push('/login');
-        }
-    };
+   
 
 
 
     return (
-        <AuthContext.Provider value={{ isAuthenticated, user, setIsAuthenticated, logout }}>
+        <AuthContext.Provider value={{ isAuthenticated, user, setUser, setIsAuthenticated }}>
             {children}
         </AuthContext.Provider>
     );

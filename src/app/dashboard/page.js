@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import './dashboard.css';
 import ProtectedRoute from '../components/ProtectedRoute';
 import { useAuth } from '../context/auth-context';
+import { useRouter } from 'next/navigation';
 
 export default function Dashboard() {
   const [showModal, setShowModal] = useState(false);
@@ -12,8 +13,8 @@ export default function Dashboard() {
   const [images, setImages] = useState([]);
   const [videos, setVideos] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
-
-  const { user, logout } = useAuth();
+  const router = useRouter()
+  const { user, setIsAuthenticated, setUser } = useAuth();
 
   useEffect(() => {
     const fetchAll = async () => {
@@ -76,6 +77,21 @@ export default function Dashboard() {
     }
 
     closeModal();
+  };
+
+  const logout = async () => {
+    try {
+      await fetch(`${process.env.NEXT_PUBLIC_BACKEND_AUTH_URL}/api/auth/logout`, {
+        method: 'POST',
+        credentials: 'include',
+      });
+    } catch {
+      // even if request fails, clear state
+    } finally {
+      setUser(null);
+      setIsAuthenticated(false);
+      router.push('/login');
+    }
   };
 
   return (
