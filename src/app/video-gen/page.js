@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import './VideoGenerationPage.css';
 import ProtectedRoute from '../components/ProtectedRoute';
+import { useAuth } from '../context/auth-context';
 
 export default function VideoGenerationPage() {
     const [step, setStep] = useState(1);
@@ -16,6 +17,7 @@ export default function VideoGenerationPage() {
     const [loadingStage, setLoadingStage] = useState(null);
     const [loadingMessage, setLoadingMessage] = useState('');
     const [videoLink, setVideoLink] = useState('');
+    const { user } = useAuth();
 
     const assetGenerationMessages = [
         'Generating assets...',
@@ -113,92 +115,92 @@ export default function VideoGenerationPage() {
     };
 
     const handleFinalSubmit = async () => {
-    setLoading(true);
-    setLoadingStage('assets');
-    setError('');
+        setLoading(true);
+        setLoadingStage('assets');
+        setError('');
 
-    try {
-        // 🚀 Call /api/generate-link
-        const firstResponse = await fetch("/api/generate-link", {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                id: localStorage.getItem('id'),
-                prompt: script,
-                usr_lang: selectedLanguage,
-                transcription_style: captionStyle.CaptionType,
-                aspect_ratio: videoAR,
-                generate_images: true,
-                generate_audio: true,
-            }),
-        });
+        try {
+            // 🚀 Call /api/generate-link
+            const firstResponse = await fetch("/api/generate-link", {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    id: user.userId,
+                    prompt: script,
+                    usr_lang: selectedLanguage,
+                    transcription_style: captionStyle.CaptionType,
+                    aspect_ratio: videoAR,
+                    generate_images: true,
+                    generate_audio: true,
+                }),
+            });
 
-        if (!firstResponse.ok) throw new Error('First backend failed');
-        const firstData = await firstResponse.json();
-        console.log('✅ First backend response:', firstData);
+            if (!firstResponse.ok) throw new Error('First backend failed');
+            const firstData = await firstResponse.json();
+            console.log('✅ First backend response:', firstData);
 
-        if (!firstData?.assets) throw new Error('No assets returned');
+            if (!firstData?.assets) throw new Error('No assets returned');
 
-        setLoadingStage('rendering');
+            setLoadingStage('rendering');
 
-        // 🚀 Call /api/render
-        const secondResponse = await fetch("/api/render", {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                id: localStorage.getItem('id'),
-                fid: firstData.request_id,
-                images: firstData.assets.images,
-                audio: firstData.assets.audio,
-                captions: firstData.assets.captions,
-                scenes: firstData.assets.scenes,
-                aspect_ratio: videoAR,
-                add_image_overlay: false, // adjust if needed
-                styles: captionStyle,
-            }),
-        });
+            // 🚀 Call /api/render
+            const secondResponse = await fetch("/api/render", {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    id: user.userId,
+                    fid: firstData.request_id,
+                    images: firstData.assets.images,
+                    audio: firstData.assets.audio,
+                    captions: firstData.assets.captions,
+                    scenes: firstData.assets.scenes,
+                    aspect_ratio: videoAR,
+                    add_image_overlay: false, // adjust if needed
+                    styles: captionStyle,
+                }),
+            });
 
-        if (!secondResponse.ok) throw new Error('Second backend failed');
-        const secondData = await secondResponse.json();
-        console.log('✅ Second backend response:', secondData);
+            if (!secondResponse.ok) throw new Error('Second backend failed');
+            const secondData = await secondResponse.json();
+            console.log('✅ Second backend response:', secondData);
 
-        if (secondData.status === 'success' && secondData.video_url) {
-            // 🚀 Call /api/create-video
-            try {
-                const saveResponse = await fetch('/api/create-video', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        userId: localStorage.getItem("id"),
-                        videoUrl: `${localStorage.getItem("id")}/${firstData.request_id}.mp4`
-                    }),
-                });
+            if (secondData.status === 'success' && secondData.video_url) {
+                // 🚀 Call /api/create-video
+                try {
+                    const saveResponse = await fetch('/api/create-video', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            userId: user.userId,
+                            videoUrl: `${user.userId}/${firstData.request_id}.mp4`
+                        }),
+                    });
 
-                if (!saveResponse.ok) {
-                    const errorData = await saveResponse.json();
-                    throw new Error(errorData.error || 'Failed to save video');
+                    if (!saveResponse.ok) {
+                        const errorData = await saveResponse.json();
+                        throw new Error(errorData.error || 'Failed to save video');
+                    }
+
+                    const saveData = await saveResponse.json();
+                    if (saveData.success === true) {
+                        setVideoLink(saveData.newVideo._id);
+                        setStep('completed');
+                    }
+                } catch (err) {
+                    console.log(`❌ Save error: ${err.message}`);
+                    throw err;
                 }
-
-                const saveData = await saveResponse.json();
-                if (saveData.success === true) {
-                    setVideoLink(saveData.newVideo._id);
-                    setStep('completed');
-                }
-            } catch (err) {
-                console.log(`❌ Save error: ${err.message}`);
-                throw err;
+            } else {
+                throw new Error('Video generation failed');
             }
-        } else {
-            throw new Error('Video generation failed');
+        } catch (err) {
+            console.error(err);
+            setError(err.message || 'Something went wrong');
+            setStep('error');
         }
-    } catch (err) {
-        console.error(err);
-        setError(err.message || 'Something went wrong');
-        setStep('error');
-    }
 
-    setLoading(false);
-};
+        setLoading(false);
+    };
 
 
     const whisperLanguages = [

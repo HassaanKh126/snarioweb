@@ -5,10 +5,13 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import '../script.css';
 import ProtectedRoute from '../../components/ProtectedRoute';
+import { useAuth } from '@/app/context/auth-context';
 
 export default function GenerateScript() {
     const params = useParams();
     const id = params.id;
+
+    const { user } = useAuth();
 
     const [input, setInput] = useState('');
     const [generatedScript, setGeneratedScript] = useState('');
@@ -122,7 +125,7 @@ export default function GenerateScript() {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    userId: localStorage.getItem("id"),
+                    userId: user.userId,
                     userInput: input,
                     generatedScript: script,  // Optional: If you're associating with a project
                 }),
@@ -159,10 +162,6 @@ export default function GenerateScript() {
                     newScript: script,  // Optional: If you're associating with a project
                 }),
             });
-
-            const data = await response.json()
-            console.log(data);
-
 
             if (response.ok) {
                 setSaveStatus('✅ Script saved successfully.');

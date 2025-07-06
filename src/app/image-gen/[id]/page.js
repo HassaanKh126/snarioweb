@@ -4,10 +4,13 @@ import { useEffect, useState } from 'react';
 import '../imagegen.css';
 import { useParams } from 'next/navigation';
 import ProtectedRoute from '../../components/ProtectedRoute';
+import { useAuth } from '@/app/context/auth-context';
 
 export default function GenerateImage() {
     const params = useParams();
     const id = params.id;
+
+    const { user } = useAuth()
 
     const [prompt, setPrompt] = useState('');
     const [aspectRatio, setAspectRatio] = useState('1:1');
@@ -60,7 +63,7 @@ export default function GenerateImage() {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    userId: localStorage.getItem("id"),
+                    userId: user.userId,
                     prompt,
                     ar: aspectRatio,
                     id: imageId,

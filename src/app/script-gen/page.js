@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import './script.css';
 import ProtectedRoute from '../components/ProtectedRoute';
+import { useAuth } from '../context/auth-context';
 
 export default function GenerateScript() {
     const [input, setInput] = useState('');
@@ -13,6 +14,7 @@ export default function GenerateScript() {
     const [error, setError] = useState('');
     const [saveStatus, setSaveStatus] = useState('');
     const [currentId, setCurrentId] = useState('');
+    const { user } = useAuth();
 
     const handleGenerate = async () => {
         if (input.trim() === '') {
@@ -93,7 +95,7 @@ export default function GenerateScript() {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    userId: localStorage.getItem("id"), // TODO: replace with actual user id if available
+                    userId: user.userId, // TODO: replace with actual user id if available
                     userInput: input,
                     generatedScript: script,
                 }),

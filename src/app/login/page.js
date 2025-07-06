@@ -34,7 +34,7 @@ export default function LoginPage() {
       if (!res.ok) {
         throw new Error(data.error || 'Login failed');
       }
-
+      
       window.location.href = '/dashboard';
     } catch (err) {
       setError(err.message || 'Something went wrong');
