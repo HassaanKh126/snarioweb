@@ -10,7 +10,7 @@ export async function POST(req: Request) {
   }
 
   // Validate the session cookie with your auth backend
-  const authRes = await fetch('http://localhost:5000/api/auth/check', {
+  const authRes = await fetch(`${process.env.BACKEND_AUTH_URL}/api/auth/check`, {
     headers: {
       cookie: `${sessionCookie.name}=${sessionCookie.value}`,
     },
