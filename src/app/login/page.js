@@ -35,13 +35,17 @@ export default function LoginPage() {
         throw new Error(data.error || 'Login failed');
       }
 
-      window.location.href = '/dashboard';
+      setTimeout(() => {
+        window.location.href = '/dashboard';
+      }, 2000);
+
     } catch (err) {
       setError(err.message || 'Something went wrong');
     } finally {
       setLoading(false);
     }
   };
+
 
   return (
     <div className="singularity">
@@ -71,8 +75,8 @@ export default function LoginPage() {
           <span>{`Don't have an account?`}</span>
           <a href="/signup">Sign Up</a>
         </div>
-          <pre style={{marginBottom: 0, marginTop: 40}}>Email: demo1234@gmail.com</pre>
-          <pre>Password: demo1234</pre>
+        <pre style={{ marginBottom: 0, marginTop: 40 }}>Email: demo1234@gmail.com</pre>
+        <pre>Password: demo1234</pre>
       </div>
       <div className="right-panel">
         <div className="grain-overlay"></div>
