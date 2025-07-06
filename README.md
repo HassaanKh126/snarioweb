@@ -1,6 +1,6 @@
 # KontentFlow - AI Content OS
 
-**AI Content OS** is a powerful SaaS platform that helps creators, marketers, and teams generate content effortlessly. Using state-of-the-art AI models, it enables you to create **scripts, images, and audio** from simple prompts — all in one unified workspace.
+**KontentFlow** is a powerful SaaS platform that helps creators, marketers, and teams generate content effortlessly. Using state-of-the-art AI models, it enables you to create **scripts, images, and audio** from simple prompts — all in one unified workspace.
 
 ---
 
