@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import '../script.css';
 import ProtectedRoute from '../../components/ProtectedRoute';
-import { useAuth } from '@/app/context/auth-context';
+import { useAuth } from '../../context/auth-context';
 
 export default function GenerateScript() {
     const params = useParams();

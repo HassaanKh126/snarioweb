@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import '../imagegen.css';
 import { useParams } from 'next/navigation';
 import ProtectedRoute from '../../components/ProtectedRoute';
-import { useAuth } from '@/app/context/auth-context';
+import { useAuth } from '../../context/auth-context';
 
 export default function GenerateImage() {
     const params = useParams();
