@@ -9,7 +9,6 @@ export async function POST(req) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ id }),
         });
-        console.log(backendRes);
         
         if (!backendRes.ok) {
             const error = await backendRes.json();

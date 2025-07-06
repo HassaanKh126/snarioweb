@@ -65,7 +65,6 @@ const VideoPage = () => {
                 </>
               )}
               <button className='vp-secondary-btn' onClick={() => window.history.back()}>Go Back</button>
-              <button className="vp-primary-btn" onClick={() => window.location.href = "/schedule"}>Schedule</button>
             </div>
           </div>
 

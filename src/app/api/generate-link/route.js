@@ -10,7 +10,6 @@ export async function POST(req) {
             body: JSON.stringify(body),
         });
 
-        console.log(backendRes);
         const data = await backendRes.json();
         
         if (!backendRes.ok) {
