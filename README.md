@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Snario - AI Content OS
 
-## Getting Started
+**AI Content OS** is a powerful SaaS platform that helps creators, marketers, and teams generate content effortlessly. Using state-of-the-art AI models, it enables you to create **scripts, images, and audio** from simple prompts — all in one unified workspace.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+✅ **Script Generation**  
+Create blog posts, social media captions, ad copy, stories, and more with our advanced AI text generation.  
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+✅ **AI Image Creation**  
+Turn text prompts into stunning visuals — perfect for campaigns, blogs, or personal projects.  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+✅ **Audio Generation**  
+Convert text into realistic AI-generated speech for podcasts, videos, and accessibility.  
 
-## Learn More
+✅ **Unified Workspace**  
+Manage all your generated content in one place, with easy export and collaboration tools.  
 
-To learn more about Next.js, take a look at the following resources:
+✅ **Cloud-based SaaS**  
+No installation required — accessible anytime, anywhere from your browser.  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🌐 Live Demo
 
-## Deploy on Vercel
+👉 [Visit AI Content OS](https://snarioweb.vercel.app/)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+*Sign up and start creating in seconds.*
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🖥️ Tech Stack
+
+- **Frontend:** Next.js, React, CSS
+- **Backend:** Node.js, Express, APIs
+
+---
+
+## 📝 How to Use
+
+1️⃣ **Sign Up**  
+Create an account on the platform.  
+
+2️⃣ **Choose a Mode**  
+Pick whether you want to generate a script, image, or audio.  
+
+3️⃣ **Enter a Prompt**  
+Describe what you need — our AI will handle the rest.  
+
+4️⃣ **Preview and Download**  
+Edit, preview, and download your generated content.
