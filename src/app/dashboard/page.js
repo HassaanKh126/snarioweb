@@ -90,6 +90,7 @@ export default function Dashboard() {
     } finally {
       setUser(null);
       setIsAuthenticated(false);
+      localStorage.removeItem("sntoken")
       router.push('/login');
     }
   };

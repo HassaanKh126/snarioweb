@@ -13,8 +13,18 @@ export const AuthProvider = ({ children }) => {
 
     const checkAuth = async () => {
         try {
+            const token = localStorage.getItem('sntoken');
+
+            if (!token) {
+                setUser(null);
+                setIsAuthenticated(false);
+                return null;
+            }
+
             const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_AUTH_URL}/api/auth/check`, {
-                credentials: 'include'
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                },
             });
 
             if (res.ok) {
@@ -43,7 +53,7 @@ export const AuthProvider = ({ children }) => {
         }
     }, [pathname]);
 
-   
+
 
 
 

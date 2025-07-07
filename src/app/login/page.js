@@ -35,6 +35,8 @@ export default function LoginPage() {
         throw new Error(data.error || 'Login failed');
       }
 
+      localStorage.setItem("sntoken", data.sntoken)
+
       setTimeout(() => {
         window.location.href = '/dashboard';
       }, 2000);
