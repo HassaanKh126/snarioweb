@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import './imagegen.css';
 import ProtectedRoute from '../components/ProtectedRoute';
+import { useAuth } from '../context/auth-context';
 
 export default function GenerateImage() {
     const [prompt, setPrompt] = useState('');
@@ -11,6 +12,7 @@ export default function GenerateImage() {
     const [error, setError] = useState('');
     const [images, setImages] = useState([]);
     const [imageId, setImageId] = useState("");
+    const { user } = useAuth();
 
     const handleGenerate = async () => {
         if (!prompt.trim()) {
@@ -26,7 +28,7 @@ export default function GenerateImage() {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    userId: localStorage.getItem('id'),
+                    userId: user.userId,
                     prompt,
                     ar: aspectRatio,
                     id: imageId,
