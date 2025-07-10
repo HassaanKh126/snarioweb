@@ -10,7 +10,7 @@ export default function VideoGenerationPage() {
     const [scriptOption, setScriptOption] = useState('');
     const [idea, setIdea] = useState('');
     const [script, setScript] = useState('');
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [videoAR, setVideoAR] = useState('16:9');
     const [selectedLanguage, setSelectedLanguage] = useState('en');
@@ -324,7 +324,7 @@ export default function VideoGenerationPage() {
             <div className="video-gen-container">
                 {loading ? (
                     <div className="video-gen-loader-container">
-                        <p>Please Wait... it takes a little time.</p>
+                        <p style={{ fontSize: 12 }}>Please Wait... it takes a little time.</p>
                         <h1 className="video-gen-title">Video Generator</h1>
                         <div className="video-gen-loader"></div>
                         <p style={{ marginTop: '1rem', fontSize: '0.8rem' }}>{loadingMessage}</p>
