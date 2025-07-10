@@ -39,8 +39,6 @@ export default function GenerateScript() {
             if (data && data.script) {
                 setGeneratedScript(data.script);
                 handleSave(data.script)
-            } else {
-                setError('Failed to generate script.');
             }
         } catch (err) {
             setError('Error: ' + err.message);

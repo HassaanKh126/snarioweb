@@ -174,6 +174,9 @@ export default function Dashboard() {
                   <div className="dash-project-type">Video</div>
                 </div>
               ))}
+              {scripts.length + images.length + videos.length === 0 && (
+                <h2>No Recent Projects.</h2>
+              )}
             </div>
           </div>
         </div>
