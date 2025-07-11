@@ -26,7 +26,7 @@ export default function Home() {
             <span>Your</span> <span id='aitext'>Content</span> <span id='aitext'>Workflow,</span><br />
             <span>Simplified</span> <span>with</span> <span id='aitext'>AI.</span>
           </h1>
-          <p>Create and schedule content using AI.</p>
+          <p>Create content in seconds using AI.</p>
           <div className="hero-buttons">
             <button className="primary-btn" onClick={() => { window.location.href = '/login' }}>Get Started</button>
             <button className="secondary-btn">Learn More</button>
