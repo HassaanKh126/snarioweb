@@ -1,0 +1,58 @@
+/* Font Declaration */
+@import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap');
+
+/* General Styles for the Page */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #000000; /* Dark background */
+}
+
+/* Centered Container */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Card Styling */
+.card {
+  background-color: #1e1e1e; /* Slightly lighter gray for the card */
+  padding: 40px 50px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+}
+
+/* Heading Styling */
+.heading {
+  color: #f1f1f1; /* Subtle off-white color */
+  font-size: 30px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Text Styling */
+.text {
+  color: #b0b0b0; /* Soft gray for body text */
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+/* Link Styling */
+.link {
+  color: #7b55b8; /* Clean blue for links */
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.link:hover {
+  text-decoration: underline; /* Underline on hover for interaction */
+}

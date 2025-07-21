@@ -22,7 +22,7 @@ export default function GenerateScript() {
     const [saveStatus, setSaveStatus] = useState('');
     const [currentId, setCurrentId] = useState('');
 
-    useEffect(() => {
+    useEffect(() => {        
         const fetchScript = async () => {
             try {
                 const response = await fetch(`/api/fetch-script`, {
